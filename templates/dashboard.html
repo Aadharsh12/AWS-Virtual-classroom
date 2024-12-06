@@ -1,0 +1,289 @@
+{% extends 'base.html' %} {% block body %}
+
+<style>
+	/* Dashboard Styling */
+	.dashboard-container {
+		background: linear-gradient(
+			135deg,
+			#cfd8dc,
+			#e9eff4
+		); /* Softer, cooler gradient */
+		padding: 30px;
+		border-radius: 10px;
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+		max-width: 1200px;
+		margin: 50px auto;
+		color: #2d3436; /* Darker text for elegance */
+		min-height: 100vh; /* Full viewport height */
+		display: flex;
+		flex-direction: column;
+		overflow-y: auto; /* Allow scrolling if content overflows */
+	}
+
+	.dashboard-title {
+		text-align: center;
+		font-size: 2.5rem;
+		color: #34495e; /* Darker, subtle color */
+		margin-bottom: 25px;
+		font-family: "Arial", sans-serif;
+		font-weight: 600;
+	}
+
+	/* Section Styling */
+	.section-title {
+		font-size: 2rem;
+		color: #34495e; /* Soft mustard for contrast */
+		margin-bottom: 15px;
+		text-align: center;
+		font-family: "Arial", sans-serif;
+		font-weight: 500;
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+	}
+
+	.section {
+		background-color: #ffffff;
+		padding: 18px;
+		border-radius: 8px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+		margin-bottom: 25px;
+	}
+
+	/* Course Card Styling */
+	.course-card {
+		background-color: #ecf0f1; /* Lighter grayish tone */
+		padding: 15px;
+		border-radius: 8px;
+		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+	}
+
+	.course-card:hover {
+		transform: scale(1.02);
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+	}
+
+	.course-name {
+		font-size: 1.4rem;
+		font-weight: 500;
+		color: #2980b9; /* Elegant blue */
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+	}
+
+	.course-description {
+		font-size: 1rem;
+		color: #7f8c8d; /* Subtle gray */
+		margin-top: 8px;
+	}
+
+	.download-button {
+		display: inline-block;
+		margin-top: 12px;
+		padding: 10px 22px;
+		background-color: #2980b9; /* Elegant blue */
+		color: white;
+		font-size: 0.95rem;
+		border-radius: 5px;
+		text-decoration: none;
+		text-align: center;
+		transition: background-color 0.2s ease;
+	}
+
+	.download-button:hover {
+		background-color: #3498db; /* Lighter blue on hover */
+	}
+
+	/* Video Card Styling */
+	.video-card {
+		background-color: #ecf0f1; /* Subtle grayish tone */
+		padding: 15px;
+		border-radius: 8px;
+		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+	}
+
+	.video-card:hover {
+		transform: scale(1.02);
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+	}
+
+	.video-name {
+		font-size: 1.4rem;
+		font-weight: 500;
+		color: #2980b9; /* Elegant blue */
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+		text-align: center; /* Center the title */
+	}
+
+	.video-link {
+		font-size: 1rem;
+		color: #7f8c8d; /* Subtle gray */
+		margin-top: 8px;
+	}
+
+	.video-thumbnail {
+		width: 100%;
+		max-height: 200px;
+		object-fit: cover;
+		border-radius: 5px;
+		cursor: pointer; /* Make cursor pointer to show it's clickable */
+	}
+
+	/* Grid layout for course videos */
+	.course-list {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr); /* 3 columns */
+		gap: 30px;
+		list-style-type: none; /* Remove bullets */
+		padding-left: 0; /* Remove default padding */
+	}
+
+	/* Responsive styling for smaller screens */
+	@media screen and (max-width: 768px) {
+		.dashboard-container {
+			padding: 20px;
+			margin: 20px;
+		}
+
+		.dashboard-title {
+			font-size: 2rem;
+		}
+
+		.section {
+			padding: 15px;
+		}
+
+		/* Stack video cards in 1 column for smaller screens */
+		.course-list {
+			grid-template-columns: 1fr; /* 1 column */
+		}
+
+		.course-card,
+		.video-card {
+			padding: 15px;
+		}
+	}
+</style>
+
+<div class="dashboard-container">
+	<h1 class="dashboard-title">Welcome to Your Student Dashboard</h1>
+
+	<!-- Course Videos Section -->
+	<!-- Course Videos Section -->
+	<section class="section">
+		<h2 class="section-title">Course Videos</h2>
+		<ul class="course-list">
+			{% for video in videos %} {% set video_id = video.url.split(':')[-1] %}
+			<li class="course-item">
+				<div class="video-card">
+					<a href="{{ video.url }}" target="_blank">
+						<img
+							class="video-thumbnail"
+							src="https://img.youtube.com/vi/{{ video_id }}/hqdefault.jpg"
+							alt="Thumbnail for {{ video.name }}"
+						/>
+					</a>
+					<h3 class="video-name">{{ video.name }}</h3>
+				</div>
+			</li>
+			{% endfor %}
+
+			<!-- Add the specific video URL here -->
+			<li class="course-item">
+				<div class="video-card">
+					<a
+						href="https://youtu.be/Z1RJmh_OqeA?si=4v3JOAhSEw3FNkqm"
+						target="_blank"
+					>
+						<img
+							class="video-thumbnail"
+							src="https://img.youtube.com/vi/Z1RJmh_OqeA/hqdefault.jpg"
+							alt="Thumbnail for Understanding Technology in Financial Disruption"
+						/>
+					</a>
+					<h3 class="video-name">Flask tutorial</h3>
+				</div>
+			</li>
+
+			<li class="course-item">
+				<div class="video-card">
+					<a href="https://youtu.be/k1RI5locZE4" target="_blank">
+						<img
+							class="video-thumbnail"
+							src="https://img.youtube.com/vi/k1RI5locZE4/hqdefault.jpg"
+							alt="Thumbnail for Flask Tutorial"
+						/>
+					</a>
+					<h3 class="video-name">AWS Tutorial</h3>
+				</div>
+			</li>
+			<li class="course-item">
+				<div class="video-card">
+					<a href="https://youtu.be/vLnPwxZdW4Y" target="_blank">
+						<img
+							class="video-thumbnail"
+							src="https://img.youtube.com/vi/vLnPwxZdW4Y/hqdefault.jpg"
+							alt="Thumbnail for Flask Tutorial"
+						/>
+					</a>
+					<h3 class="video-name">C++ Tutorial</h3>
+				</div>
+			</li>
+			<li class="course-item">
+				<div class="video-card">
+					<a href="https://youtu.be/A74TOX803D0" target="_blank">
+						<img
+							class="video-thumbnail"
+							src="https://img.youtube.com/vi/A74TOX803D0/hqdefault.jpg"
+							alt="Thumbnail for Python Tutorial"
+						/>
+					</a>
+					<h3 class="video-name">Java Tutorial</h3>
+				</div>
+			</li>
+			<li class="course-item">
+				<div class="video-card">
+					<a href="https://youtu.be/fqMOX6JJhGo" target="_blank">
+						<img
+							class="video-thumbnail"
+							src="https://img.youtube.com/vi/fqMOX6JJhGo/hqdefault.jpg"
+							alt="Thumbnail for Python Basics"
+						/>
+					</a>
+					<h3 class="video-name">Docker tutorial</h3>
+				</div>
+			</li>
+			<li class="course-item">
+				<div class="video-card">
+					<a href="https://youtu.be/rfscVS0vtbw" target="_blank">
+						<img
+							class="video-thumbnail"
+							src="https://img.youtube.com/vi/rfscVS0vtbw/hqdefault.jpg"
+							alt="Thumbnail for Full Python Course"
+						/>
+					</a>
+					<h3 class="video-name">Python Tutorial</h3>
+				</div>
+			</li>
+		</ul>
+	</section>
+
+	<!-- Course Materials Section -->
+	<section class="section">
+		<h2 class="section-title">Course Materials</h2>
+		<ul class="course-list">
+			{% for course in courses %}
+			<li class="course-item">
+				<div class="course-card">
+					<h3 class="course-name">{{ course.name }}</h3>
+					<p class="course-description">{{ course.description }}</p>
+					<a href="{{ course.file_url }}" class="download-button" download
+						>Download Course Material</a
+					>
+				</div>
+			</li>
+			{% endfor %}
+		</ul>
+	</section>
+</div>
+
+{% endblock %}

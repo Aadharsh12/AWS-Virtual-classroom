@@ -1,0 +1,11 @@
+{% extends 'base.html' %} {% block body %}
+<h2>Available Courses</h2>
+<ul>
+	{% for course, file_key in courses %}
+	<li>
+		{{ course }} -
+		<a href="{{ url_for('download', file_key=file_key) }}">Download</a>
+	</li>
+	{% endfor %}
+</ul>
+{% endblock %}

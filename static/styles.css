@@ -1,0 +1,102 @@
+/* Ensure the navbar stays on top of the page */
+.navbar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: #333; /* Change background to black */
+	color: white;
+	z-index: 1000;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+	padding: 10px 20px;
+}
+
+.container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.navbar-left {
+	list-style: none;
+	display: flex;
+	padding: 0;
+}
+
+.navbar-left li {
+	margin-right: 20px;
+}
+
+.navbar-left a {
+	color: white;
+	text-decoration: none;
+	font-size: 18px;
+	transition: color 0.3s ease;
+}
+
+.navbar-left a:hover {
+	color: #ff7e5f; /* Change to a lighter color for hover */
+}
+
+.navbar-right {
+	list-style: none;
+	display: flex;
+	align-items: center;
+}
+
+.navbar-right li {
+	margin-left: 10px; /* Reduced margin to bring login button closer */
+}
+
+.navbar-right .login-btn {
+	padding: 8px 20px;
+	background-color: #ff7e5f;
+	border-radius: 10px;
+	color: white;
+	font-size: 16px;
+	text-decoration: none;
+	transition: background-color 0.3s ease;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 50px;
+}
+
+.navbar-right .login-btn:hover {
+	background-color: #feb47b;
+}
+
+.user-dropdown {
+	position: relative;
+	cursor: pointer;
+	margin-right: 50px;
+}
+
+.user-dropdown ul {
+	display: none;
+	position: absolute;
+	background-color: #444;
+	list-style: none;
+	padding: 10px;
+	border-radius: 5px;
+	top: 20px;
+	right: 0;
+}
+
+.user-dropdown:hover ul {
+	display: block;
+}
+
+.user-dropdown a {
+	color: white;
+	text-decoration: none;
+}
+
+.user-dropdown a:hover {
+	color: #ff7e5f;
+}
+
+.content {
+	margin-top: 80px; /* Space for the fixed navbar */
+	padding: 20px;
+}

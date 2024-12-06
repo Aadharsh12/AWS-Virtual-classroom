@@ -1,0 +1,148 @@
+{% extends 'base.html' %} {% block head %}
+<style>
+	/* Animated Background (subtle gradient) */
+	body {
+		background: linear-gradient(-45deg, #e3f2fd, #f1f8e9, #ffffff);
+		background-size: 400% 400%;
+		animation: gradientBG 12s ease infinite;
+	}
+
+	@keyframes gradientBG {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+
+	/* Form Container */
+	.form-container {
+		max-width: 400px;
+		margin: 100px auto;
+		background: rgba(255, 255, 255, 0.9);
+		padding: 30px 35px;
+		border-radius: 8px;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+		text-align: center;
+		font-family: "Poppins", sans-serif;
+	}
+
+	.form-container h2 {
+		margin-bottom: 20px;
+		font-size: 2em;
+		color: #2c3e50;
+		font-weight: 600;
+	}
+
+	/* Form Inputs */
+	.form-container label {
+		font-size: 1.1em;
+		color: #34495e;
+		font-weight: 600;
+		display: block;
+		margin: 12px 0 6px;
+		text-align: left;
+	}
+
+	.form-container input {
+		width: calc(
+			100% - 24px
+		); /* Adjust input width to prevent being too far to the right */
+		padding: 12px;
+		margin: 8px 0 18px;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		font-size: 1em;
+		background-color: #f9fafb;
+		font-family: "Roboto", sans-serif;
+		transition: all 0.3s ease-in-out;
+		box-sizing: border-box; /* Ensure padding doesn't increase the width */
+	}
+
+	.form-container input:focus {
+		outline: none;
+		border-color: #3498db;
+		box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+	}
+
+	/* Login Button */
+	.form-container button {
+		width: calc(
+			100% - 24px
+		); /* Adjust button width to prevent being too far to the right */
+		padding: 12px 20px;
+		background: linear-gradient(45deg, #3498db, #2980b9);
+		color: white;
+		font-size: 1.1em;
+		font-weight: 600;
+		border: none;
+		border-radius: 30px;
+		cursor: pointer;
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+		transition: all 0.3s ease-in-out;
+		margin: 8px 0; /* Add spacing between button and other elements */
+	}
+
+	.form-container button:hover {
+		background: linear-gradient(45deg, #2980b9, #1f6397);
+		transform: translateY(-2px);
+		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+	}
+
+	/* Forgot Password and Back Links */
+	.form-container a {
+		display: block;
+		margin-top: 18px;
+		color: #3498db;
+		font-size: 0.9em;
+		text-decoration: none;
+	}
+
+	.form-container a:hover {
+		text-decoration: underline;
+	}
+
+	/* Error Message Styling */
+	.error-message {
+		color: #e74c3c;
+		font-weight: 600;
+		margin-bottom: 10px;
+		text-align: left;
+	}
+</style>
+{% endblock %} {% block body %}
+<div class="form-container">
+	<h2>Login</h2>
+	<form method="POST">
+		<!-- Show error message if credentials are incorrect -->
+		{% if session.get('error_message') %}
+		<div class="error-message">{{ session['error_message'] }}</div>
+		<!-- The error message is only shown once and then removed -->
+		{% set _ = session.pop('error_message', None) %} {% endif %}
+
+		<label for="username">Username</label>
+		<input
+			type="text"
+			id="username"
+			name="username"
+			placeholder="Enter your username"
+			required
+		/>
+		<label for="password">Password</label>
+		<input
+			type="password"
+			id="password"
+			name="password"
+			placeholder="Enter your password"
+			required
+		/>
+		<button type="submit">Login</button>
+	</form>
+	<a href="{{ url_for('register') }}">Don't have an account? Register here</a>
+	<a href="{{ url_for('index') }}">Back to Home</a>
+</div>
+{% endblock %}

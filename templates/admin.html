@@ -1,0 +1,235 @@
+{% extends 'base.html' %} {% block body %}
+<div class="admin-dashboard">
+	<h1 class="dashboard-title">Admin Dashboard</h1>
+
+	<!-- Form to upload course material -->
+	<section class="upload-section">
+		<h2 class="section-title">Upload New Course Material</h2>
+		<form method="POST" enctype="multipart/form-data" class="upload-form">
+			<div class="form-group">
+				<label for="course_name">Course Name</label>
+				<input type="text" id="course_name" name="course_name" required />
+			</div>
+
+			<div class="form-group">
+				<label for="description">Description</label>
+				<textarea id="description" name="description" required></textarea>
+			</div>
+
+			<div class="form-group">
+				<label for="file">Upload Material</label>
+				<input type="file" id="file" name="file" required />
+			</div>
+
+			<button type="submit" class="upload-button">Upload</button>
+		</form>
+	</section>
+
+	<!-- List of existing courses -->
+	<section class="courses-section">
+		<h2 class="section-title">Existing Materials</h2>
+		<ul class="course-list">
+			{% for course in courses %}
+			<li class="course-item">
+				<div class="course-card">
+					<a href="{{ course.file_url }}" download class="course-link">
+						<h3 class="course-name">{{ course.name }}</h3>
+						<p class="course-description">{{ course.description }}</p>
+					</a>
+				</div>
+			</li>
+			{% endfor %}
+		</ul>
+	</section>
+</div>
+
+<style>
+	/* Importing Google Fonts */
+	@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Roboto:wght@400;500&display=swap");
+
+	/* General Styling */
+	.admin-dashboard {
+		font-family: "Poppins", sans-serif;
+		background: linear-gradient(-45deg, #f0f4f8, #f7fafc, #e9f1f7, #f2f6fb);
+		background-size: 400% 400%;
+		animation: gradientBG 12s ease infinite;
+		padding: 20px;
+		border-radius: 8px;
+		color: #2d3436;
+		line-height: 1.6;
+	}
+
+	@keyframes gradientBG {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+
+	.dashboard-title {
+		text-align: center;
+		color: #34495e;
+		margin-bottom: 30px;
+		font-size: 36px;
+		font-weight: 600;
+		letter-spacing: -1px;
+	}
+
+	.upload-section,
+	.courses-section {
+		background-color: rgba(255, 255, 255, 0.95);
+		padding: 20px;
+		border-radius: 10px;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+		margin-bottom: 30px;
+		border: none;
+	}
+
+	.section-title {
+		font-size: 28px;
+		color: #0c0d2a;
+		margin-bottom: 15px;
+		text-transform: uppercase;
+		font-weight: 500;
+		letter-spacing: 1px;
+	}
+
+	.form-group {
+		margin-bottom: 20px;
+	}
+
+	label {
+		font-size: 16px;
+		color: #34495e;
+		display: block;
+		margin-bottom: 8px;
+	}
+
+	input[type="text"],
+	input[type="file"],
+	textarea {
+		width: 100%;
+		padding: 12px;
+		border: 2px solid #bdc3c7;
+		border-radius: 6px;
+		font-size: 16px;
+		background-color: #f7f9f9;
+		margin-bottom: 12px;
+		font-family: "Roboto", sans-serif;
+	}
+
+	textarea {
+		height: 150px;
+		resize: vertical;
+	}
+
+	.upload-button {
+		background: linear-gradient(45deg, #1b2a49, #0a0521);
+		color: rgb(255, 255, 255);
+		border: none;
+		padding: 12px 25px;
+		font-size: 18px;
+		border-radius: 30px;
+		cursor: pointer;
+		width: 100%;
+		transition: all 0.3s ease-in-out;
+	}
+
+	.upload-button:hover {
+		background: linear-gradient(45deg, #95a5a6, #7f8c8d);
+		transform: translateY(-3px);
+		box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+	}
+
+	.course-list {
+		list-style-type: none;
+		padding: 0;
+	}
+
+	.course-item {
+		background-color: #ecf0f1;
+		border-radius: 6px;
+		margin-bottom: 15px;
+		padding: 15px;
+		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+		transition: all 0.3s ease;
+	}
+
+	.course-card {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.course-link {
+		color: #2980b9;
+		text-decoration: none;
+		display: block;
+		width: 100%;
+	}
+
+	.course-name {
+		font-size: 20px;
+		font-weight: 600;
+		margin: 0;
+		color: #2c3e50;
+	}
+
+	.course-description {
+		font-size: 16px;
+		color: #7f8c8d;
+		margin: 5px 0;
+	}
+
+	/* Hover Effects */
+	.course-item:hover {
+		background-color: #dcdfe1;
+		box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.1);
+		transform: translateY(-5px);
+	}
+
+	.course-item:hover .course-link .course-name {
+		color: #2980b9;
+	}
+
+	/* Responsive Design for Mobile */
+	@media (max-width: 768px) {
+		.admin-dashboard {
+			padding: 10px;
+		}
+
+		.upload-section,
+		.courses-section {
+			padding: 15px;
+		}
+
+		.form-group {
+			margin-bottom: 15px;
+		}
+
+		input[type="text"],
+		input[type="file"],
+		textarea {
+			padding: 8px;
+			font-size: 14px;
+		}
+
+		.upload-button {
+			width: 100%;
+			padding: 10px;
+		}
+	}
+
+	/* Fixing alignment issues in form fields */
+	.form-group input,
+	.form-group textarea {
+		margin: 0; /* Remove any default margin */
+		width: calc(100% - 24px); /* Adjust width for better alignment */
+	}
+</style>
+{% endblock %}

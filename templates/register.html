@@ -1,0 +1,118 @@
+{% extends 'base.html' %} {% block head %}
+<style>
+	/* Background */
+	body {
+		background: linear-gradient(
+			to right,
+			#f0f4f8,
+			#e1e8ef
+		); /* Soft gradient background */
+		background-size: 100% 100%;
+	}
+
+	/* Form Container */
+	.form-container {
+		max-width: 400px;
+		margin: 80px auto;
+		background: rgba(255, 255, 255, 0.95); /* Light background for form */
+		padding: 25px 30px;
+		border-radius: 8px;
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+		text-align: center;
+		font-family: "Arial", sans-serif;
+	}
+
+	.form-container h2 {
+		margin-bottom: 20px;
+		font-size: 2em;
+		color: #333; /* Subtle text color */
+		font-weight: 600;
+	}
+
+	/* Form Labels */
+	.form-container label {
+		font-size: 1em;
+		color: #444; /* Slightly darker label color */
+		font-weight: 600;
+		display: block;
+		margin: 12px 0 6px;
+		text-align: left;
+	}
+
+	/* Form Inputs */
+	.form-container input {
+		width: 100%;
+		padding: 12px;
+		margin: 8px 0 20px;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		font-size: 1em;
+		transition: all 0.3s ease-in-out;
+		box-sizing: border-box;
+	}
+
+	.form-container input:focus {
+		outline: none;
+		border-color: #0078d7; /* Matching blue */
+		box-shadow: 0 0 8px rgba(0, 120, 215, 0.3);
+	}
+
+	/* Submit Button */
+	.form-container button {
+		width: 100%;
+		padding: 12px 20px;
+		background: #0078d7; /* More subtle blue */
+		color: white;
+		font-size: 1.1em;
+		font-weight: 600;
+		border: none;
+		border-radius: 30px;
+		cursor: pointer;
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+		transition: all 0.3s ease-in-out;
+	}
+
+	.form-container button:hover {
+		background: #005a9e; /* Darker blue for hover */
+		transform: translateY(-2px);
+		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+	}
+
+	/* Back to Home Link */
+	.form-container a {
+		display: block;
+		margin-top: 15px;
+		color: #0078d7;
+		font-size: 0.9em;
+		text-decoration: none;
+	}
+
+	.form-container a:hover {
+		text-decoration: underline;
+	}
+</style>
+{% endblock %} {% block body %}
+<div class="form-container">
+	<h2>Register Now</h2>
+	<form method="POST">
+		<label for="username">Username</label>
+		<input
+			type="text"
+			id="username"
+			name="username"
+			placeholder="Enter your username"
+			required
+		/>
+		<label for="password">Password</label>
+		<input
+			type="password"
+			id="password"
+			name="password"
+			placeholder="Enter your password"
+			required
+		/>
+		<button type="submit">Sign Up</button>
+	</form>
+	<a href="{{ url_for('index') }}">Back to Home</a>
+</div>
+{% endblock %}

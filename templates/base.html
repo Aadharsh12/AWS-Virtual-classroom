@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='styles.css') }}"
+		/>
+		<title>Virtual Classroom</title>
+		{% block head %}{% endblock %}
+	</head>
+	<body>
+		{% if request.endpoint not in ['login', 'register'] %}
+		<!-- Navbar -->
+		<nav class="navbar">
+			<div class="container">
+				<ul class="navbar-left">
+					<li><a href="{{ url_for('index') }}">Home</a></li>
+					<li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+					{% if session.get('role') == 'admin' %}
+					<li><a href="{{ url_for('admin') }}">Admin Dashboard</a></li>
+					{% endif %}
+				</ul>
+				<ul class="navbar-right">
+					{% if 'user' in session %}
+					<li class="user-dropdown">
+						<a href="#">Hello, {{ session['user'] }}</a>
+						<ul class="dropdown-menu">
+							<li><a href="{{ url_for('logout') }}">Logout</a></li>
+						</ul>
+					</li>
+					{% else %}
+					<li><a href="{{ url_for('login') }}" class="login-btn">Login</a></li>
+					{% endif %}
+				</ul>
+			</div>
+		</nav>
+		{% endif %}
+		<div class="content">{% block body %}{% endblock %}</div>
+	</body>
+</html>
