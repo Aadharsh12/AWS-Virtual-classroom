@@ -14,11 +14,6 @@ The **AWS Virtual Classroom** is a cloud-based web application designed to enabl
 
 ---
 
-## Project Structure
-AWS-Virtual-classroom/ ├── app.py # Main application file ├── models.py # Database models and logic ├── requirements.txt # Python dependencies ├── static/ # Static assets (CSS, JS, images) ├── templates/ # HTML templates ├── .git/ # Version control metadata
-
-
----
 
 ## Technologies Used
 
@@ -37,10 +32,3 @@ Ensure you have the following installed on your system:
 - **AWS CLI** (for AWS integrations)
 
 ---
-
-## Installation and Setup
-
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/your-username/AWS-Virtual-classroom.git
-
