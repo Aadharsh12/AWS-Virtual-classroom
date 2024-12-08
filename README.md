@@ -37,60 +37,60 @@ Ensure you have the following installed on your system:
 
 ### S3 Bucket used
 
-![S3 Bucket used](screenshots/s3_bucket_used.png)
+![S3 Bucket used](Screenshots/s3_bucket_used.png)
 
 ### Contents of the S3 bucket
 
-![Contents of the S3 bucket](screenshots/contents_s3_bucket.png)
+![Contents of the S3 bucket](Screenshots/contents_s3_bucket.png)
 
 ### Database used
 
-![Database used](screenshots/database_used.png)
+![Database used](Screenshots/database_used.png)
 
 ### EC2 instance
 
-![EC2 instance](screenshots/ec2_instance.png)
+![EC2 instance](Screenshots/ec2_instance.png)
 
 ### Running the Flask Application
 
-![Running the Flask Application](screenshots/running_flask_application.png)
+![Running the Flask Application](Screenshots/running_flask_application.png)
 
 ### Website index page
 
-![Website index page](screenshots/website_index_page.png)
+![Website index page](Screenshots/website_index_page.png)
 
 ### Registration page
 
-![Registration page](screenshots/registration_page.png)
+![Registration page](Screenshots/registration_page.png)
 
 ### Login page
 
-![Login page](screenshots/login_page.png)
+![Login page](Screenshots/login_page.png)
 
 ### Index page after logging in
 
-![Index page after logging in](screenshots/index_page_logged_in.png)
+![Index page after logging in](Screenshots/index_page_logged_in.png)
 
 ### Student dashboard (Course videos)
 
-![Student dashboard (Course videos)](screenshots/student_dashboard_videos.png)
+![Student dashboard (Course videos)](Screenshots/student_dashboard_videos.png)
 
 ### Student dashboard (Course materials)
 
-![Student dashboard (Course materials)](screenshots/student_dashboard_materials.png)
+![Student dashboard (Course materials)](Screenshots/student_dashboard_materials.png)
 
 ### Admin dashboard
 
-![Admin dashboard](screenshots/admin_dashboard.png)
+![Admin dashboard](Screenshots/admin_dashboard.png)
 
 ### Uploading course material
 
-![Uploading course material](screenshots/uploading_material.png)
+![Uploading course material](Screenshots/uploading_material.png)
 
 ### Viewing the material in admin dashboard
 
-![Viewing the material in admin dashboard](screenshots/admin_view_material.png)
+![Viewing the material in admin dashboard](Screenshots/admin_view_material.png)
 
 ### Viewing the material in S3 bucket
 
-![Viewing the material in S3 bucket](screenshots/viewing_material_s3_bucket.png)
+![Viewing the material in S3 bucket](Screenshots/viewing_material_s3_bucket.png)
