@@ -4,6 +4,12 @@ The **AWS Virtual Classroom** is a cloud-based web application designed to enabl
 
 ---
 
+## Demo Video
+
+▶️ [Watch the demo video here](https://drive.google.com/file/d/1EjVlzxbSasXykCWdzLC20YHWMOup6tS7/view?usp=sharing)
+
+---
+
 ## Features
 
 - **User Authentication**: Secure login and registration for students and instructors.
